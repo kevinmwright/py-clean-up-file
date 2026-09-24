@@ -1,5 +1,6 @@
 from __future__ import annotations
-import os 
+import os
+
 
 class CleanUpFile:
     def __init__(self, filename: str) -> None:
@@ -8,6 +9,9 @@ class CleanUpFile:
     def __enter__(self) -> CleanUpFile:
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self,
+                 exc_type: Exception | None,
+                 exc_val: Exception | None,
+                 exc_tb: None) -> None:
         if os.path.exists(self.filename):
             os.remove(self.filename)
